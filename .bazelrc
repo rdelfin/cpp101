@@ -1,0 +1,2 @@
+build --symlink_prefix=bzl-build/
+build --explain=bzl-build/explain.log --verbose_explanations
