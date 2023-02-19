@@ -15,6 +15,7 @@ def pytest_test(name, srcs, deps = [], args = [], data = [], **kwargs):
         main = "//3rdparty/python:pytest_wrapper.py",
         args = [
             "--capture=no",
+            "--junit-xml=$$XML_OUTPUT_FILE",
         ] + args + ["$(location :%s)" % x for x in srcs],
         python_version = "PY3",
         srcs_version = "PY3",
