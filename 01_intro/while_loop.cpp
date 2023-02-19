@@ -2,7 +2,6 @@
 #include <string>
 
 int main() {
-    bool running = true;
     std::string line;
     // Will stay in loop until you press Ctrl+D
     while (std::getline(std::cin, line)) {
