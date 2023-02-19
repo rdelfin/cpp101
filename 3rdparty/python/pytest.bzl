@@ -20,8 +20,6 @@ def pytest_test(name, srcs, deps = [], args = [], data = [], **kwargs):
         srcs_version = "PY3",
         deps = deps + [
             pip_deps("pytest"),
-            pip_deps("pytest-black"),
-            pip_deps("pytest-pylint"),
         ],
         data = data,
         **kwargs
