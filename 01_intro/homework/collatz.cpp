@@ -9,9 +9,11 @@ int main() {
 
     if(user_input <=0){
         std::cout << "Please enter a non-zero positive integer!" << std::endl;
+        return 1;
     }
     else{
         uint32_t number = user_input ;
+        std::cout << number << std::endl;
         while(number !=1){
             if(number%2 == 0){
                 number = number / 2;
