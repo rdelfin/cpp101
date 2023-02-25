@@ -97,21 +97,20 @@ to do this without lists, and you want some help, expand the spoiler below:
 
 <details>
     <summary>Solution spoiler</summary>
-    You don't need to read all the input at the start. You can read them one by one.
+You don't need to read all the input at the start. You can read them one by one.
 
-    Additionally, you can have nested loops. For example:
-
-    ```cpp
-    for(unsigned int i = 0; i < 100; i++) {
-        // This while loop will run 100 times
-        for(unsigned int j = 0; j < 10; j++) {
-            // The code in here will 100*10 = 1,000 times
-        }
+Additionally, you can have nested loops. For example:
+```cpp
+for(unsigned int i = 0; i < 100; i++) {
+    // This while loop will run 100 times
+    for(unsigned int j = 0; j < 10; j++) {
+        // The code in here will 100*10 = 1,000 times
     }
-    ```
+}
+```
 
-    Note they don't need to be the same kind of loop. You can mix while loops and for
-    loops, for example.
+Note they don't need to be the same kind of loop. You can mix while loops and for
+loops, for example.
 </details>
 
 ### Performance
