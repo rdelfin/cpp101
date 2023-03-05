@@ -23,9 +23,12 @@ int main(int argc, char* argv[]) {
     //std::cout << "total elements are " << (int)input_sequence.size() << std::endl;
     std::cout << std::endl;
 
-    // Converts everything to lower case
+    // Converts everything to lower case and remove end punctuations only
     for(int i=0; i < (int) input_sequence.size(); i++){
         transform(input_sequence[i].begin(), input_sequence[i].end(), input_sequence[i].begin(), ::tolower);
+        if (ispunct(input_sequence[i].back())){
+            input_sequence[i] = input_sequence[i].substr(0, input_sequence[i].length() - 1);
+        }
     }
 
     for (int i=0; i < (int)input_sequence.size(); i++){
