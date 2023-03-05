@@ -20,13 +20,6 @@ int main(int argc, char* argv[]) {
         input_sequence.push_back(line) ;
     }
 
-    //std::cout << std::endl;
-    //std::cout << "The input is as follows: " << std::endl;
-    //for (int i=0; i < (int)input_sequence.size(); i++){
-    //    std::cout << input_sequence[i] << std::endl;
-    //}
-
-    //std::cout << "total elements are " << (int)input_sequence.size() << std::endl;
     std::cout << std::endl;
 
     // Converts everything to lower case and remove end punctuations only
@@ -41,7 +34,6 @@ int main(int argc, char* argv[]) {
         int count = 1;
         auto itr = std::find(output.begin(), output.end(), input_sequence[i]);
         if (itr != output.end()) {
-           // std::cout << "Found " << input_sequence[i] << "in output already" << std::endl;
         }
         else {
             for(int j=0; j < (int)input_sequence.size(); j++){
@@ -57,11 +49,7 @@ int main(int argc, char* argv[]) {
         } 
     }
 
-    for(int i=0; i < (int)output.size(); i++){
-        std::cout << output[i] << " " << repetitions[i] << std::endl;
-    }
-
-    std::cout << "Start sorting..." << std::endl;
+    //std::cout << "Start sorting..." << std::endl;
     std::vector<std::pair<std::string, int>> sorted_pair;
 
     for(int i=0; i< (int)repetitions.size(); i++){
