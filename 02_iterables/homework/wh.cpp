@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cstring>
 #include <vector>
+#include "CLI/CLI11.hpp"
 
 bool compare(std::pair<std::string, int> p1, std::pair<std::string, int> p2) {
     if (p1.second != p2.second ) 
@@ -10,11 +11,21 @@ bool compare(std::pair<std::string, int> p1, std::pair<std::string, int> p2) {
 }
 
 int main(int argc, char* argv[]) {
+    CLI::App app{"Word Counter"};
     std::string line;
     std::vector<std::string> input_sequence;
     std::vector<std::string> output;
     std::vector<int> repetitions;
+    bool reverse_sequence;
+    int num;
+    int elements;
 
+
+    app.set_help_all_flag("--help-all", "Expand all help");
+    app.add_flag("-r,--reverse", reverse_sequence,
+                 "Add this flag in if you want the reverse order");
+    app.add_option("-n,--num", num, "Number of elements");
+    CLI11_PARSE(app, argc, argv);
 
     while (std::getline(std::cin, line)) {
         input_sequence.push_back(line) ;
@@ -51,23 +62,30 @@ int main(int argc, char* argv[]) {
 
     //std::cout << "Start sorting..." << std::endl;
     std::vector<std::pair<std::string, int>> sorted_pair;
-
     for(int i=0; i< (int)repetitions.size(); i++){
         sorted_pair.push_back(std::make_pair(output[i], repetitions[i]));
     }
 
     std::sort(sorted_pair.begin(), sorted_pair.end(), compare);
 
-    for(int i=0; i < (int)repetitions.size(); i++){
-        std::cout << sorted_pair[i].first << " " << sorted_pair[i].second << std::endl;
+    if(num == 0){
+        elements = (int)repetitions.size();
+    }
+    else{
+        elements = num;
     }
 
-    //std::sort(repetitions.begin(), repetitions.end());
+    int x;
+    if(reverse_sequence == true){
+        x = repetitions.size() - 1;
+    }
+    else{
+        x = 0;
+    }
 
-    //std::cout << "You've passed " << argc << " arguments" << std::endl;
-    //std::cout << "The arguments are:" << std::endl;
-    //for (int i = 0; i < argc; i++) {
-    //    std::cout << argv[i] << std::endl;
-    //}
+    for(int i=0; i < elements; i++){
+        std::cout << sorted_pair[std::abs(x-i)].first << " " << sorted_pair[std::abs(x-i)].second << std::endl;
+    }
+
     return 0;
 }
