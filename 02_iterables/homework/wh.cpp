@@ -3,6 +3,12 @@
 #include <cstring>
 #include <vector>
 
+bool compare(std::pair<std::string, int> p1, std::pair<std::string, int> p2) {
+    if (p1.second != p2.second ) 
+        return p1.second > p2.second ;
+    return p1.first < p2.first;
+}
+
 int main(int argc, char* argv[]) {
     std::string line;
     std::vector<std::string> input_sequence;
@@ -54,6 +60,22 @@ int main(int argc, char* argv[]) {
     for(int i=0; i < (int)output.size(); i++){
         std::cout << output[i] << " " << repetitions[i] << std::endl;
     }
+
+    std::cout << "Start sorting..." << std::endl;
+    std::vector<std::pair<std::string, int>> sorted_pair;
+
+    for(int i=0; i< (int)repetitions.size(); i++){
+        sorted_pair.push_back(std::make_pair(output[i], repetitions[i]));
+    }
+
+    std::sort(sorted_pair.begin(), sorted_pair.end(), compare);
+
+    for(int i=0; i < (int)repetitions.size(); i++){
+        std::cout << sorted_pair[i].first << " " << sorted_pair[i].second << std::endl;
+    }
+
+    //std::sort(repetitions.begin(), repetitions.end());
+
     //std::cout << "You've passed " << argc << " arguments" << std::endl;
     //std::cout << "The arguments are:" << std::endl;
     //for (int i = 0; i < argc; i++) {
