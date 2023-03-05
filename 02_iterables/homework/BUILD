@@ -17,7 +17,7 @@ pytest_test(
       "test_data/humpty_dumpty_capitalised.txt",
       "test_data/humpty_dumpty_lower_case.txt",
       "test_data/humpty_dumpty_punctuation.txt",
-      #"test_data/humpty_pg27995_results.txt",
+      "test_data/pg27995_results.txt",
       "test_data/pg27995.txt"
   ],
 )
