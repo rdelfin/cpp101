@@ -27,6 +27,7 @@ int main(int argc, char* argv[]) {
     bool reverse_sequence;
     int num;
     int elements;
+    int punct_count_per_word;
 
     app.set_help_all_flag("--help-all", "Expand all help");
     app.add_flag("-r,--reverse", reverse_sequence,
@@ -50,7 +51,13 @@ int main(int argc, char* argv[]) {
         std::string word;
         std::stringstream ss(user_input[i]);
         while (ss >> word){
-            input_sequence.push_back(word);
+            punct_count_per_word = 0;
+            for(int i=0; i < word.length(); i++){
+                if(ispunct(word[i])){
+                    punct_count_per_word = punct_count_per_word + 1;
+                }
+            }
+            if (punct_count_per_word != word.length()) {input_sequence.push_back(word);}
         }
     }
 
