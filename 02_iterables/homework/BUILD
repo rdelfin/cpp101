@@ -10,7 +10,7 @@ cc_binary(
 pytest_test(
   name = "wh_test",
   srcs = ["wh_test.py"],
-  deps = ["//test_common"],
+  deps = ["//test_common:test_common"],
   data = [
       ":wh",
       "test_data/humpty_dumpty_lower_case.txt"
