@@ -1,2 +1,3 @@
 build --symlink_prefix=bzl-build/
 build --explain=bzl-build/explain.log --verbose_explanations
+build --action_env=BAZEL_CXXOPTS="-std=c++17"

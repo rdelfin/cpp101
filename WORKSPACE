@@ -35,3 +35,7 @@ pip_parse(
 load("@pip_deps//:requirements.bzl", "install_deps")
 # Call it to define repos for your requirements.
 install_deps()
+
+# Load in 3rdparty C++ dependencies
+load("//3rdparty/cpp:get.bzl", "get_cpp_externals")
+get_cpp_externals()
