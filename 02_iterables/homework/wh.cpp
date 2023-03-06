@@ -5,6 +5,17 @@
 #include <vector>
 #include "CLI/CLI11.hpp"
 
+std::string exclude_puncts = "//*()[]{}/,:;'.\\#\"£$%^&*=";
+
+bool is_punct(char c){
+    for (int i=0; i<exclude_puncts.length(); i++){
+        if (c==exclude_puncts[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
 bool my_compare_descending(std::pair<std::string, int> p1, std::pair<std::string, int> p2) {
     if (p1.second != p2.second ) 
         return p1.second > p2.second ;
@@ -53,7 +64,7 @@ int main(int argc, char* argv[]) {
         while (ss >> word){
             punct_count_per_word = 0;
             for(int i=0; i < word.length(); i++){
-                if(ispunct(word[i])){
+                if(is_punct(word[i])){
                     punct_count_per_word = punct_count_per_word + 1;
                 }
             }
@@ -65,11 +76,11 @@ int main(int argc, char* argv[]) {
     for(int i=0; i < (int) input_sequence.size(); i++){
         transform(input_sequence[i].begin(), input_sequence[i].end(), input_sequence[i].begin(), ::tolower);
 
-        while(input_sequence[i].length() && ispunct(input_sequence[i].back())){
+        while(input_sequence[i].length() && is_punct(input_sequence[i].back())){
             input_sequence[i].pop_back();
         }
 
-        while(input_sequence[i].length() && ispunct(input_sequence[i].front())){
+        while(input_sequence[i].length() && is_punct(input_sequence[i].front())){
             input_sequence[i] = input_sequence[i].substr(1, input_sequence[i].length());
         }
     }
