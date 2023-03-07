@@ -8,7 +8,7 @@
 std::string exclude_puncts = "//*()[]{}/,:;'.\\#\"£$%^&*=";
 
 bool is_punct(char c){
-    for (int i=0; i<exclude_puncts.length(); i++){
+    for (int i=0; i< (int)exclude_puncts.length(); i++){
         if (c==exclude_puncts[i]){
             return true;
         }
@@ -58,17 +58,18 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
+    // Read user single/multi line user input and append to a vec of words (wont contain words with only puncts)
     for(int i=0; i< (int)user_input.size(); i++){
         std::string word;
         std::stringstream ss(user_input[i]);
         while (ss >> word){
             punct_count_per_word = 0;
-            for(int i=0; i < word.length(); i++){
+            for(int i=0; i < (int)word.length(); i++){
                 if(is_punct(word[i])){
                     punct_count_per_word = punct_count_per_word + 1;
                 }
             }
-            if (punct_count_per_word != word.length()) {input_sequence.push_back(word);}
+            if (punct_count_per_word != (int)word.length()) {input_sequence.push_back(word);}
         }
     }
 
@@ -120,6 +121,19 @@ int main(int argc, char* argv[]) {
     }
     else{
         elements = num;
+    }
+
+    std::string hacky_lower_case;
+    for (int i=0; i < elements; i++){
+        hacky_lower_case = sorted_pair[i].first;
+        for (int j=0; j < (int)hacky_lower_case.length(); j++){
+            std::cout << int(hacky_lower_case[j]) << std::endl;
+            //if(hacky_lower_case[j]== 'Æ'){
+            //    std::cout << "coming here" << std::endl;
+            //    sorted_pair[i].first[j] = 'æ';
+            //}
+            //std::cout << "not coming here" << std::endl;
+        }
     }
 
     for(int i=0; i < elements; i++){

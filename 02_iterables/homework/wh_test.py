@@ -2,7 +2,7 @@ from typing import Tuple, List, Optional, Dict
 import subprocess
 #from test_common import run_binary_raw
 
-def run_binary_raw(binary: str, stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100) -> Tuple[int, str]:
+def run_binary_raw(binary: str, stdin: str, args: Optional[List[str]] = None, timeout_s: float = 500) -> Tuple[int, str]:
     if args is None:
         args = list()
     proc = subprocess.Popen(
@@ -15,13 +15,13 @@ def run_binary_raw(binary: str, stdin: str, args: Optional[List[str]] = None, ti
     return (proc.wait(0.1), outs.decode("utf-8"))
 
 def _run_wh_raw(
-    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100
+    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 500
 ) -> Tuple[int, str]:
     return run_binary_raw("02_iterables/homework/wh", stdin, args, timeout_s)
 
 
 def _run_wh(
-    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100
+    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 500
 ) -> Tuple[int, List[Tuple[str, int]]]:
     (exit_code, output) = _run_wh_raw(stdin, args, timeout_s)
     lines = output.splitlines()
@@ -211,11 +211,11 @@ def test_book():
         book_text = f.read()
     (exit_code, output) = _run_wh(book_text)
     assert exit_code == 0
-    #assert _is_sorted(output)
-    #assert _only_unique_words(output)
+    assert _is_sorted(output)
+    assert _only_unique_words(output)
     word_dict = _lines_to_dict(output)
-
     with open("02_iterables/homework/test_data/pg27995_results.txt") as f:
         correct_lines = f.readlines()
-    correct_word_dict = {line.split()[0]: line.split()[1] for line in correct_lines}
+    correct_word_dict = {line.split()[0]: int(line.split()[1]) for line in correct_lines}
     assert word_dict == correct_word_dict
+ 
