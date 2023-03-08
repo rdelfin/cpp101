@@ -208,5 +208,5 @@ def test_book():
 
     with open("02_iterables/homework/test_data/pg27995_results.txt") as f:
         correct_lines = f.readlines()
-    correct_word_dict = {line.split()[0]: line.split()[1] for line in correct_lines}
+    correct_word_dict = {line.split()[0]: int(line.split()[1]) for line in correct_lines}
     assert word_dict == correct_word_dict
