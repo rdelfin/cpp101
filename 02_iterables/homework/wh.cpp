@@ -46,10 +46,6 @@ int main(int argc, char* argv[]) {
     app.add_option("-n,--num", num, "Number of elements");
     CLI11_PARSE(app, argc, argv);
 
-    //std::cout << " I got: " << std::endl;
-    //std::cout << reverse_sequence << std::endl;
-    //std::cout << num << std::endl;
-
     while (std::getline(std::cin, line)) {
         user_input.push_back(line) ;
     }
@@ -122,19 +118,6 @@ int main(int argc, char* argv[]) {
     else{
         elements = num;
     }
-
-    //std::string hacky_lower_case;
-    //for (int i=0; i < elements; i++){
-    //    hacky_lower_case = sorted_pair[i].first;
-    //    for (int j=0; j < (int)hacky_lower_case.length(); j++){
-    //        std::cout << int(hacky_lower_case[j]) << std::endl;
-    //        //if(hacky_lower_case[j]== 'Æ'){
-    //        //    std::cout << "coming here" << std::endl;
-    //        //    sorted_pair[i].first[j] = 'æ';
-    //        //}
-    //        //std::cout << "not coming here" << std::endl;
-    //    }
-    //}
 
     for(int i=0; i < elements; i++){
        std::cout << sorted_pair[i].first << " " << sorted_pair[i].second << std::endl;
