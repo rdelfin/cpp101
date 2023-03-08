@@ -27,8 +27,8 @@ def _is_sorted(items: List[Tuple[str, int]], descending: bool = True) -> bool:
         return True
     prev_count = items[0][1]
     for _, count in items:
-        if (descending and count >= prev_count) or (
-            not descending and count <= prev_count
+        if (descending and count > prev_count) or (
+            not descending and count < prev_count
         ):
             return False
     return True
