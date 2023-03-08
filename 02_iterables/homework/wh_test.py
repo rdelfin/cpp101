@@ -174,7 +174,7 @@ def test_humpty_dumpty_args_n6():
 def test_humpty_dumpty_args_all():
     with open("02_iterables/homework/test_data/humpty_dumpty_lower_case.txt") as f:
         humpty_dumpty_text = f.read()
-    (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "14", "r"])
+    (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "14", "-r"])
     assert exit_code == 0
     assert _is_sorted(output, False)
     assert _only_unique_words(output)
