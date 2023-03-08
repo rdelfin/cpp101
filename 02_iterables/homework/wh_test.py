@@ -6,7 +6,7 @@ from test_common import run_binary_raw
 def _run_wh_raw(
     stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100
 ) -> Tuple[int, str]:
-    return run_binary_raw("02_intro/homework/wh", stdin, args, timeout_s)
+    return run_binary_raw("02_iterables/homework/wh", stdin, args, timeout_s)
 
 
 def _run_wh(
