@@ -158,7 +158,7 @@ def test_humpty_dumpty_args_n6():
         humpty_dumpty_text = f.read()
     (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "6"])
     assert exit_code == 0
-    assert _is_sorted(output, False)
+    assert _is_sorted(output, True)
     assert _only_unique_words(output)
     word_dict = _lines_to_dict(output)
     assert word_dict == {
