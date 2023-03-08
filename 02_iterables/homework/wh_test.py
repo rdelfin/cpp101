@@ -6,7 +6,7 @@ from test_common import run_binary_raw
 def _run_wh_raw(
     stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100
 ) -> Tuple[int, str]:
-    return run_binary_raw("02_intro/homework/wh", stdin, args, timeout_s)
+    return run_binary_raw("02_iterables/homework/wh", stdin, args, timeout_s)
 
 
 def _run_wh(
@@ -27,8 +27,8 @@ def _is_sorted(items: List[Tuple[str, int]], descending: bool = True) -> bool:
         return True
     prev_count = items[0][1]
     for _, count in items:
-        if (descending and count >= prev_count) or (
-            not descending and count <= prev_count
+        if (descending and count > prev_count) or (
+            not descending and count < prev_count
         ):
             return False
     return True
@@ -158,7 +158,7 @@ def test_humpty_dumpty_args_n6():
         humpty_dumpty_text = f.read()
     (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "6"])
     assert exit_code == 0
-    assert _is_sorted(output, False)
+    assert _is_sorted(output)
     assert _only_unique_words(output)
     word_dict = _lines_to_dict(output)
     assert word_dict == {
@@ -174,7 +174,7 @@ def test_humpty_dumpty_args_n6():
 def test_humpty_dumpty_args_all():
     with open("02_iterables/homework/test_data/humpty_dumpty_lower_case.txt") as f:
         humpty_dumpty_text = f.read()
-    (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "14", "r"])
+    (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "14", "-r"])
     assert exit_code == 0
     assert _is_sorted(output, False)
     assert _only_unique_words(output)
@@ -208,5 +208,5 @@ def test_book():
 
     with open("02_iterables/homework/test_data/pg27995_results.txt") as f:
         correct_lines = f.readlines()
-    correct_word_dict = {line.split()[0]: line.split()[1] for line in correct_lines}
+    correct_word_dict = {line.split()[0]: int(line.split()[1]) for line in correct_lines}
     assert word_dict == correct_word_dict

@@ -13,6 +13,10 @@ pytest_test(
   deps = ["//test_common"],
   data = [
       ":wh",
-      "test_data/humpty_dumpty_lower_case.txt"
+      "test_data/humpty_dumpty_lower_case.txt",
+      "test_data/humpty_dumpty_capitalised.txt",
+      "test_data/humpty_dumpty_punctuation.txt",
+      "test_data/pg27995.txt",
+      "test_data/pg27995_results.txt",
   ],
 )
