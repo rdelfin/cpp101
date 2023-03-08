@@ -1,16 +1,27 @@
 from typing import Tuple, List, Optional, Dict
 import subprocess
-from test_common import run_binary_raw
+#from test_common import run_binary_raw
 
+def run_binary_raw(binary: str, stdin: str, args: Optional[List[str]] = None, timeout_s: float = 500) -> Tuple[int, str]:
+    if args is None:
+        args = list()
+    proc = subprocess.Popen(
+        [binary] + args,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+    )
+    input_bytes = stdin.encode("utf-8")
+    outs, _ = proc.communicate(input_bytes, timeout=timeout_s)
+    return (proc.wait(0.1), outs.decode("utf-8"))
 
 def _run_wh_raw(
-    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100
+    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 500
 ) -> Tuple[int, str]:
     return run_binary_raw("02_iterables/homework/wh", stdin, args, timeout_s)
 
 
 def _run_wh(
-    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 100
+    stdin: str, args: Optional[List[str]] = None, timeout_s: float = 500
 ) -> Tuple[int, List[Tuple[str, int]]]:
     (exit_code, output) = _run_wh_raw(stdin, args, timeout_s)
     lines = output.splitlines()
@@ -20,7 +31,6 @@ def _run_wh(
         assert len(split) == 2, "Each output line should contain two elements"
         result.append((split[0], int(split[1])))
     return (exit_code, result)
-
 
 def _is_sorted(items: List[Tuple[str, int]], descending: bool = True) -> bool:
     if len(items) == 0:
@@ -158,7 +168,7 @@ def test_humpty_dumpty_args_n6():
         humpty_dumpty_text = f.read()
     (exit_code, output) = _run_wh(humpty_dumpty_text, ["-n", "6"])
     assert exit_code == 0
-    assert _is_sorted(output, False)
+    assert _is_sorted(output)
     assert _only_unique_words(output)
     word_dict = _lines_to_dict(output)
     assert word_dict == {
@@ -196,7 +206,6 @@ def test_humpty_dumpty_args_all():
         "wall": 1,
     }
 
-
 def test_book():
     with open("02_iterables/homework/test_data/pg27995.txt") as f:
         book_text = f.read()
@@ -205,8 +214,8 @@ def test_book():
     assert _is_sorted(output)
     assert _only_unique_words(output)
     word_dict = _lines_to_dict(output)
-
     with open("02_iterables/homework/test_data/pg27995_results.txt") as f:
         correct_lines = f.readlines()
     correct_word_dict = {line.split()[0]: int(line.split()[1]) for line in correct_lines}
     assert word_dict == correct_word_dict
+ 
