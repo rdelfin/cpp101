@@ -13,6 +13,5 @@ pytest_test(
   deps = ["//test_common"],
   data = [
       ":wh",
-      "test_data/humpty_dumpty_lower_case.txt"
-  ],
+  ] + glob(["test_data/*"]),
 )
