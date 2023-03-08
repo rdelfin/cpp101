@@ -651,7 +651,7 @@ going 12
 head 12
 just 12
 live 12
-mediæval 12
+mediaeval 12
 miles 12
 modern 12
 night 12
@@ -2193,6 +2193,7 @@ adjoining 3
 administration 3
 admiral 3
 adventurous 3
+aeneas 3
 afflicted 3
 africa 3
 agreed 3
@@ -2800,7 +2801,6 @@ youth 3
 ~exchange~ 3
 ~lord 3
 ~queen 3
-æneas 3
 1.c 2
 1.e 2
 10,000 2
@@ -3049,6 +3049,7 @@ butter 2
 butts 2
 buzz 2
 cade 2
+caesar 2
 cairn 2
 calamity 2
 calling 2
@@ -3172,7 +3173,6 @@ curious 2
 current 2
 curtain 2
 curtains 2
-cæsar 2
 dated 2
 dealers 2
 dear 2
@@ -4251,7 +4251,7 @@ zealand 2
 ~flemings~ 2
 ~guildhall~ 2
 ~marshal~ 2
-~mediæval~ 2
+~mediaeval~ 2
 ~mercer~ 2
 ~mote~ 2
 ~stringent~ 2
@@ -4730,6 +4730,7 @@ adventure 1
 adventurers--those 1
 advertised 1
 advisers 1
+aeneid 1
 affected 1
 affects 1
 afield--to 1
@@ -4832,7 +4833,7 @@ arabs 1
 aragon 1
 arcade 1
 arch 1
-archcæologia.'_ 1
+archcaeologia.'_ 1
 archdeacons 1
 archery 1
 arches--bows--of 1
@@ -5179,6 +5180,7 @@ byron--cousin 1
 c.--that 1
 cab 1
 cade~ 1
+caesar's 1
 cairo 1
 cakes 1
 calculate 1
@@ -5592,7 +5594,6 @@ cuthbert~ 1
 cutlasses 1
 cutpurse 1
 cutting 1
-cæsar's 1
 dainty 1
 dairies 1
 damaged 1
@@ -8711,6 +8712,7 @@ zealous 1
 ~achieved~ 1
 ~admonition~ 1
 ~advocate~ 1
+~aeneas~ 1
 ~ague~ 1
 ~aisle~ 1
 ~alaric~ 1
@@ -9179,6 +9181,4 @@ zealous 1
 ~witan~ 1
 ~wych 1
 ~wycliffe~ 1
-~æneas~ 1
 × 1
-æneid 1
