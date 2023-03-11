@@ -11,10 +11,6 @@
 
 using namespace std;
 
-int ispunct_not_quote(char letter) {
-    return ispunct(letter) && (letter != '\'');
-}
-
 
 string word_lower(string word) {
     transform(word.begin(), word.end(), word.begin(), [](unsigned char c) {
@@ -37,20 +33,21 @@ int main(int argc, char** argv) {
     string line;
     string word;
     unordered_map<string, int> wordcount;
+    string punct = "{}/,:;'.\\#\"£$%^&*=";
 
     while (getline(cin, line)) {
-        // Remove punctuation
-        // Make an output iterator to write the result back into the new string
-        string line_no_punc;
-        auto myoutput_it = back_inserter(line_no_punc);
-        remove_copy_if(
-            line.begin(), line.end(), myoutput_it, //Store output           
-            (&ispunct_not_quote)  
-        );
-
         // istringsgream is great at streaming words separated by whitespace
-        istringstream ss(line_no_punc);
+        istringstream ss(line);
         while (ss >> word) {
+            // Remove punctuation at start of words
+            while (punct.find(word[0]) != string::npos) 
+                word = word.substr(1, word.length() - 1);
+            // And at end of words
+            while (punct.find(word[word.length() - 1]) != string::npos) 
+                word = word.substr(0, word.length() - 1);
+
+            if (word.length() == 0) continue;
+
             // Either insert or increment the word count
             word = word_lower(word);
             auto key_it = wordcount.find(word);

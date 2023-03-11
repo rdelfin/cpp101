@@ -139,8 +139,6 @@ def test_humpty_dumpty_puncuation():
     assert _is_sorted(output)
     assert _only_unique_words(output)
     word_dict = _lines_to_dict(output)
-    print(word_dict)
-    print(HUMPTY_DUMPTY_DICT)
     assert word_dict == HUMPTY_DUMPTY_DICT
 
 
