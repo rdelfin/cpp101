@@ -9,6 +9,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "iterator",
+    srcs = ["iterator.cpp"],
+)
+
+cc_binary(
     name = "cmdline",
     srcs = ["cmdline.cpp"],
 )
