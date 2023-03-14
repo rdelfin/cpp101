@@ -39,11 +39,27 @@ bool check_legit_user_input(std::string word){
     return is_legit_input;
 }
 
-
 std::string get_user_input(void){
     std::string user_word;
     std::cin >> user_word;
     return user_word;
+}
+
+void give_feedback_output(std::string input_word, std::string answer_word){
+    int index;
+    for(int i=0; i< (int)input_word.size(); i++){
+        index = answer_word.find(input_word[i]);
+        //std::cout << index << std::endl;
+        if(index == i){
+            std::cout << input_word[i] << " " << "V" << std::endl;
+        }
+        else if (index != i && index < input_word.length()){
+            std::cout << input_word[i] << " " << "~" << std::endl;
+        }
+        else {
+            std::cout << input_word[i] << " " << "X" << std::endl;
+        }
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -80,7 +96,13 @@ int main(int argc, char* argv[]) {
             std::cout << "CORRECT" << std::endl;
             return 0;
         }
-        std::cout << "WRONG" << std::endl;
+
+        if(feedback == false){
+            std::cout << "WRONG" << std::endl;
+        }
+        else if (feedback == true){
+            give_feedback_output(user_input, answer);
+        }
     }
 
     std::cout << "Attempts exceeded" << std::endl;
