@@ -19,7 +19,7 @@ All parts of the problem should be filled out in `wh.cpp`.
 
 AS the first pass at this problem, we'll use a simple definition for word: any segment
 of text separated from other text by whitespace, specifically spaces, new lines, and
-tabs. We consider two words as identical if they contain the exact same set of
+tabs. We consider two words as identical if they contain the exact same array of
 characters (this will be important later).
 Your first task is to write a program that will take in standard input line by line and
 prints out a tally of words you encountered, per the defition above, in order of most
