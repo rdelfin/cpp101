@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,9 +9,11 @@ std::vector<std::string> get_valid_wordle_words() {
     std::ifstream f("03_organise/homework/data/valid-wordle-words.txt");
     std::vector<std::string> words;
     std::string line;
+
     while (std::getline(f, line)) {
         words.push_back(line);
     }
+
     return words;
 }
 
@@ -76,8 +79,6 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::string> valid_words = get_valid_wordle_words();
 
-    for (size_t i = 0; i < valid_words.size(); i++) {
-        std::cout << valid_words[i] << std::endl;
     if(!check_valid_answer_word(valid_words, answer)){
         std::cout << "Answer word not valid, please check again." << std::endl;
         return 3;
@@ -103,10 +104,9 @@ int main(int argc, char* argv[]) {
             give_feedback_output(user_input, answer);
         }
     }
-    return 0;
 
     std::cout << "Attempts exceeded" << std::endl;
-
+    
 
 
     return 1;
