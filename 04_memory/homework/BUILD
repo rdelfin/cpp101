@@ -1,3 +1,8 @@
+cc_binary(
+    name = "vector_hw",
+    srcs = ["vector.cpp", "vector.hpp"],
+)
+
 cc_library(
     name = "homework",
     hdrs = ["vector.hpp"],
