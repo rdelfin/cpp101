@@ -2,8 +2,6 @@
 
 #include <string>
 #include <iostream>
-#include <array>
-
 
 // As taken from 03_organise/classes2.cpp. Don't touch this class
 class Person {
@@ -35,7 +33,7 @@ class Person {
 
 class OutOfBoundsException : public std::exception {
    public:
-    std::string what() { return "Index out of bounds"; }
+    char* what() { return "Index out of bounds"; }
 };
  
 class PersonVector {
@@ -53,8 +51,6 @@ class PersonVector {
     }
 
     ~PersonVector() {
-        // Put your code here
-        //delete[] people_ ;
     }
 
     // This function should return a reference to the person at the index
@@ -145,6 +141,7 @@ class PersonVector {
     // implemented as part of the homework, this is the behaviour you will get
     // if you compare two People objects with a `==` operator
     bool contains(const Person& person) {
+        // Put your code here
        for(int i=0; i<(int)size_; i++){
             if((people_[i].first_name_ == person.first_name_) && 
             (people_[i].last_name_ == person.last_name_) &&
@@ -160,6 +157,4 @@ class PersonVector {
     size_t size_;
     Person* people_;
 
-    
-    
 };

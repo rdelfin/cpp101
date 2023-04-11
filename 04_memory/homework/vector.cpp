@@ -2,7 +2,6 @@
 #include "04_memory/homework/vector.hpp"
 #include <vector>
 
-
 int main(){
     Person p;
     p.first_name_ = "Arvind";
