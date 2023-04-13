@@ -17,7 +17,6 @@ int main() {
     // Prints "footballs"
     std::cout << "Output after second append:" << std::endl;
     std::cout << "\t" << some_word << std::endl;
-    std::cout << "\t" << some_word << std::endl;
     std::cout << "\t" << *some_word_ptr << std::endl;
 
     // Prints a memory address
