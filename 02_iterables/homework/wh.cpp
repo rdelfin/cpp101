@@ -6,11 +6,11 @@
 
 std::string removePunctuation(std::string str) {
     const std::string punctuation = "*()[]{}/,:;'.\\#\"£$%^&*=";
-    while (str.find_first_of(punctuation) == 0){
+    while (!str.empty() && str.find_first_of(punctuation) == 0){
         str.erase(0,1);
     }
 
-    while (str.find_last_of(punctuation) == str.length() - 1) {
+    while (!str.empty() && str.find_last_of(punctuation) == str.length() - 1) {
         str.erase(str.find_last_of(punctuation));
     }
     return str;
@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
         std::stringstream iss(line);
         std::string word;
 
-        while (iss >> word) {
+        while (iss >> word && !word.empty()) {
             word = removePunctuation(word);
 
             for (auto &c : word) {
@@ -60,7 +60,6 @@ int main(int argc, char* argv[]) {
                 map_of_words.insert_or_assign(word, count);
             }
         }
-        
     }
 
     for(std::map<std::string, int>::const_iterator it = map_of_words.begin(); it != map_of_words.end(); ++it) {
