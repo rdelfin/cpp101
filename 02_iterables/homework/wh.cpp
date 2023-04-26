@@ -4,22 +4,34 @@
 #include <bits/stdc++.h>
 #include <cctype>
 
+std::string removePunctuation(std::string str) {
+    const std::string punctuation = "*()[]{}/,:;'.\\#\"£$%^&*=";
+    while (str.find_first_of(punctuation) == 0){
+        str.erase(0,1);
+    }
+
+    while (str.find_last_of(punctuation) == str.length() - 1) {
+        str.erase(str.find_last_of(punctuation));
+    }
+    return str;
+}
+
 int main() {
     std::string line;
     std::map<std::string, int> map_of_words;
     std::vector<std::pair<std::string, int>> vector_of_words;
 
     while (std::getline(std::cin, line)) {
-        
-
         std::stringstream iss(line);
-
         std::string word;
 
         while (iss >> word) {
+            word = removePunctuation(word);
+
             for (auto &c : word) {
                 c = static_cast<char>(std::tolower(c));
             }
+
             if (map_of_words.find(word) == map_of_words.end()) {
                 map_of_words.insert_or_assign(word, 1);
             } else {
