@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <bits/stdc++.h>
+#include <cctype>
 
 int main() {
     std::string line;
@@ -16,6 +17,9 @@ int main() {
         std::string word;
 
         while (iss >> word) {
+            for (auto &c : word) {
+                c = static_cast<char>(std::tolower(c));
+            }
             if (map_of_words.find(word) == map_of_words.end()) {
                 map_of_words.insert_or_assign(word, 1);
             } else {
