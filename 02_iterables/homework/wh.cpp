@@ -79,10 +79,12 @@ int main(int argc, char* argv[]) {
 
     int i = 0;
     for (auto & element : vector_of_words) {
-        std::cout << element.first << " " << element.second << std::endl;
-        i++;
-        if (i == n) {
-            break;
+        if (element.first != "") {
+            std::cout << element.first << " " << element.second << std::endl;
+            i++;
+            if (i == n) {
+                break;
+            }
         }
     }
 }
