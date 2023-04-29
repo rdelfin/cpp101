@@ -4,7 +4,7 @@
 
 void expectVectorsEqual(std::vector<Person> correct, PersonVector checked) {
     EXPECT_EQ(checked.size(), correct.size());
-    for (size_t i = 0; i < checked.size(); i++) {
+    for (int i = 0; i < (int)checked.size(); i++) {
         EXPECT_EQ(checked.get(i), correct[i]);
     }
     EXPECT_THROW(checked.get(checked.size() + 1), OutOfBoundsException);
@@ -17,9 +17,17 @@ TEST(VectorTest, EmptyInitialise) {
     EXPECT_THROW(v.get(0), OutOfBoundsException);
 }
 
+TEST(VectorTest, expectVectorsEqual) {
+    Person p;
+    p.first_name_ = "";
+    p.last_name_ = "";
+    p.age_ = 0;
+    PersonVector a(3, p);
+    expectVectorsEqual({p, p, p}, a);
+}
+
 TEST(VectorTest, InitialiseOnly) {
     PersonVector v(3, Person());
-
     expectVectorsEqual({Person(), Person(), Person()}, v);
 }
 
